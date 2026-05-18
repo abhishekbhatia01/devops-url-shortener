@@ -73,20 +73,16 @@ Backend Container (Node.js + Express)
 MongoDB Atlas
 ```
 
-## CI/CD Workflow
-- Developer pushes code to GitHub
-        ↓
-- GitHub Webhook triggers Jenkins
-        ↓
-- Jenkins clones latest repository
-        ↓
-- Creates environment configuration
-        ↓
-- Builds Docker images
-        ↓
-- Stops/removes old containers
-        ↓
-- Deploys updated application on AWS EC2
+# 🚀 CI/CD Deployment Pipeline
+
+```mermaid
+flowchart TD
+    A[👨‍💻 Developer pushes code to GitHub] --> B[🔔 GitHub Webhook triggers Jenkins]
+    B --> C[📥 Jenkins clones latest repository]
+    C --> D[⚙️ Creates environment configuration]
+    D --> E[🐳 Builds Docker images]
+    E --> F[🧹 Stops & removes old containers]
+    F --> G[☁️ Deploys updated application on AWS EC2]
 
 ## Project Structure
 ```text
