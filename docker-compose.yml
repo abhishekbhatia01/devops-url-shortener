@@ -1,18 +1,30 @@
 services:
   frontend:
-    build: ./frontend
-    container_name: frontend
+    build: ./Frontend
+    container_name: Frontend
     ports:
-      - "5173:5173"
+      - "3000:3000"
     depends_on:
-      - backend
+      - Backend
     restart: always
 
   backend:
-    build: ./backend
-    container_name: backend
+    build: ./Backend
+    container_name: Backend
     ports:
       - "5000:5000"
     env_file:
-      - ./backend/.env
+      - ./Backend/.env
+    restart: always
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - Frontend
+      - Backend
     restart: always
