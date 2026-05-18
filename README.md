@@ -41,7 +41,6 @@ It also demonstrates practical DevOps implementation including:
 - React.js
 - Vite
 - Tailwind CSS
-- Axios
 
 ### Backend
 - Node.js
