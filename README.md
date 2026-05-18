@@ -2,8 +2,6 @@
 
 A full-stack URL Shortener application deployed with a complete DevOps CI/CD pipeline using Docker, Jenkins, Nginx, and AWS EC2.
 
-## Live Demo
-🚀 http://98.81.125.40
 
 ---
 
