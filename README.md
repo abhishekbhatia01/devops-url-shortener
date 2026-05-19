@@ -1,41 +1,50 @@
-# devops-url-shortener
+# 🚀 DevOps URL Shortener
 
-A full-stack URL Shortener application deployed with a complete DevOps CI/CD pipeline using Docker, Jenkins, Nginx, and AWS EC2.
+A full-stack **URL Shortener Application** deployed with a complete **DevOps CI/CD pipeline** using **Docker, Docker Compose, Jenkins, Nginx, GitHub Webhooks, and AWS EC2**.
 
-
----
-
-## Overview
-
-This project is a full-stack URL shortener application that allows users to convert long URLs into short, shareable links.
-
-It also demonstrates practical DevOps implementation including:
-
-- Application containerization with Docker
-- Multi-container orchestration with Docker Compose
-- Reverse proxy setup using Nginx
-- CI/CD automation using Jenkins
-- Automatic deployment using GitHub Webhooks
-- Cloud deployment on AWS EC2
-- MongoDB Atlas cloud database integration
+This project demonstrates real-world DevOps practices by automating build, deployment, and infrastructure management for a production-ready web application.
 
 ---
 
-## Features
+## 📌 Overview
 
-- Shorten long URLs
-- Redirect shortened URLs to original destination
-- Full-stack web application
-- Dockerized frontend and backend
-- Reverse proxy with Nginx
+This application allows users to convert long URLs into short, shareable links and automatically redirect users to the original destination.
+
+Beyond application functionality, this project showcases practical DevOps implementation, including:
+
+- 🐳 Docker containerization
+- 📦 Multi-container orchestration with Docker Compose
+- 🔄 CI/CD automation using Jenkins
+- 🔗 GitHub Webhook integration
+- 🌐 Reverse proxy configuration with Nginx
+- ☁️ Cloud deployment on AWS EC2
+- 🗄️ MongoDB Atlas cloud database integration
+
+---
+
+## ✨ Features
+
+### Application Features
+
+- Shorten long URLs instantly
+- Redirect shortened URLs to original URLs
+- Responsive frontend UI
+- RESTful backend API
+- MongoDB cloud database integration
+
+### DevOps Features
+
+- Dockerized frontend and backend services
 - Automated CI/CD pipeline
 - Auto deployment on every GitHub push
-- Cloud deployment on AWS EC2
-- MongoDB Atlas integration
+- Reverse proxy with Nginx
+- Jenkins deployment automation
+- Cloud hosting on AWS EC2
+- Environment variable configuration management
 
 ---
 
-## Tech Stack
+## 🛠️ Tech Stack
 
 ### Frontend
 - React.js
@@ -48,47 +57,64 @@ It also demonstrates practical DevOps implementation including:
 - MongoDB Atlas
 - Mongoose
 
-### DevOps & Deployment
+### DevOps / Deployment
 - Docker
 - Docker Compose
 - Jenkins
 - GitHub Webhooks
 - Nginx
 - AWS EC2
-- Amazon Linux
+- Amazon Linux 2023
 
 ---
 
-## System Architecture
+## 🏗️ System Architecture
 
 ```text
-User
-  ↓
-Nginx Reverse Proxy
-  ↓
-Frontend Container (React + Vite)
-  ↓
-Backend Container (Node.js + Express)
-  ↓
-MongoDB Atlas
+                    User
+                     │
+                     ▼
+           Nginx Reverse Proxy
+                     │
+        ┌────────────┴────────────┐
+        ▼                         ▼
+Frontend Container         Backend Container
+ (React + Vite)           (Node.js + Express)
+                                  │
+                                  ▼
+                           MongoDB Atlas
 ```
 
-## CI/CD Workflow
-- Developer pushes code to GitHub
-        ↓
-- GitHub Webhook triggers Jenkins
-        ↓
-- Jenkins clones latest repository
-        ↓
-- Creates environment configuration
-        ↓
-- Builds Docker images
-        ↓
-- Stops/removes old containers
-        ↓
-- Deploys updated application on AWS EC2
+---
 
-## Project Structure
+## 🔄 CI/CD Workflow
+
+```text
+Developer pushes code to GitHub
+            │
+            ▼
+GitHub Webhook triggers Jenkins
+            │
+            ▼
+Jenkins pulls latest repository
+            │
+            ▼
+Creates environment configuration
+            │
+            ▼
+Builds Docker images
+            │
+            ▼
+Stops and removes old containers
+            │
+            ▼
+Deploys updated application on AWS EC2
+```
+
+---
+
+## 📂 Project Structure
+
 ```text
 devops-url-shortener/
 │
@@ -102,7 +128,8 @@ devops-url-shortener/
 │   ├── routes/
 │   ├── models/
 │   ├── config/
-│   └── Dockerfile
+│   ├── Dockerfile
+│   └── .env
 │
 ├── nginx/
 │   └── nginx.conf
@@ -112,17 +139,22 @@ devops-url-shortener/
 └── README.md
 ```
 
-## Local Setup
+---
 
-### Clone Repository
+## ⚙️ Local Setup
+
+### 1️⃣ Clone Repository
+
 ```bash
 git clone https://github.com/abhishekbhatia01/devops-url-shortener.git
 cd devops-url-shortener
 ```
 
-### Create Environment Variables
+---
 
-Create a `.env` file inside `Backend/`
+### 2️⃣ Configure Environment Variables
+
+Create a `.env` file inside the `Backend/` directory:
 
 ```env
 PORT=5000
@@ -130,48 +162,85 @@ MONGO_URI=your_mongodb_connection_string
 BASE=http://localhost
 ```
 
-### Run Application
+---
+
+### 3️⃣ Run Application with Docker
+
 ```bash
-docker-compose up --build
+docker compose up --build
 ```
 
-Open:
+---
+
+## 🌐 Access Application
+
+Open in browser:
+
+```bash
 http://localhost
+```
 
-## Deployment
+---
 
-The application is deployed on AWS EC2 using:
+## ☁️ Deployment
+
+This project is deployed on **AWS EC2** using:
 
 - Docker containers
 - Nginx reverse proxy
-- Jenkins CI/CD automation
-- GitHub Webhook auto deployment
+- Jenkins automation server
+- GitHub Webhooks
+- MongoDB Atlas
 
-Every push to the GitHub repository automatically triggers Jenkins, which rebuilds and redeploys the application.
+### Deployment Flow
 
-## Challenges Solved
+Every push to the GitHub repository automatically:
 
-During development and deployment, the following challenges were resolved:
+- Triggers Jenkins
+- Pulls latest code
+- Builds fresh Docker images
+- Removes old containers
+- Deploys updated application
 
-- Docker image build issues
-- Docker Compose configuration problems
-- Linux case-sensitive path errors
-- Nginx reverse proxy setup
-- Vite host blocking issue
-- WebSocket/HMR deployment issues
+---
+
+## 🐛 Challenges Solved
+
+During development and deployment, several real-world DevOps issues were resolved:
+
+- Docker image build failures
+- Docker Compose networking issues
+- Linux case-sensitive path problems
+- Nginx reverse proxy configuration
+- Vite host accessibility issues
+- WebSocket / HMR deployment errors
 - Jenkins workspace permission conflicts
 - Environment variable handling in CI/CD
 - Container naming conflicts
-- Git/Jenkins integration issues
+- GitHub webhook integration issues
 
-## Future Improvements
-- Production frontend build using `npm run build`
-- SSL/HTTPS with Let's Encrypt
-- Custom domain setup
+---
+
+## 🔮 Future Improvements
+
+Planned enhancements:
+
+- Production frontend build (`npm run build`)
+- HTTPS with Let's Encrypt SSL
+- Custom domain configuration
 - Jenkinsfile pipeline as code
-- Monitoring with Prometheus and Grafana
+- Monitoring with Prometheus + Grafana
 - Kubernetes deployment
+- Blue-Green deployment strategy
 
-## Author
+---
 
-Abhishek Bhatia
+## 👨‍💻 Author
+
+**Abhishek Bhatia**
+
+---
+
+## ⭐ If you like this project
+
+Give it a **star ⭐ on GitHub**
